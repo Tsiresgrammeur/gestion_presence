@@ -20,8 +20,8 @@ class ProfesseurService {
         return professeurDAO.deleteProfesseur(id);
     }
 
-    updateProfesseur(id, professeur_name) {
-        return professeurDAO.updateProfesseur(id, professeur_name.professeur_name);
+    updateProfesseur(id, professeur) {
+        return professeurDAO.updateProfesseur(id, professeur);
     }
 }
 

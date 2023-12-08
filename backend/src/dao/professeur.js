@@ -25,9 +25,10 @@ class ProfesseurDAO {
         return await db('Professeur').where('id', id).del();
     }
 
-    async updateProfesseur(id, name) {
+    async updateProfesseur(id, professeur) {
         return db('Professeur').where({ id: id }).update({
-            professeur_name: name
+            nom: professeur.nom,
+            prenom: professeur.prenom
         });
     }
 
