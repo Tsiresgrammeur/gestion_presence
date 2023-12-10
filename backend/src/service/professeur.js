@@ -11,8 +11,7 @@ class ProfesseurService {
     }
 
     createProfesseur(professeurDto) {
-        const { nom, prenom } = professeurDto;
-        professeurDAO.createProfesseur(nom, prenom);
+        return professeurDAO.createProfesseur(professeurDto);
 
     }
 

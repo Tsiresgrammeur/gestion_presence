@@ -29,7 +29,8 @@ class ProfesseurController {
     async createProfesseur(req, res) {
         try {
             const id = await professeurService.createProfesseur(req.body)
-            res.status(201).json(id);
+            if(id)
+            res.status(201).json({success:true});
         } catch (error) {
             console.error(error);
 

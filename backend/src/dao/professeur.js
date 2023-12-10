@@ -10,12 +10,11 @@ class ProfesseurDAO {
         return await db('Professeur').where('id', id).first();
     }
 
-    async createProfesseur(nom, prenom) {
+    async createProfesseur(professeur) {
         const [id] = await db('Professeur').insert({
-            nom,
-            prenom
-        })
-            .returning('id');
+            nom:professeur.nom,
+            prenom:professeur.prenom
+        }).returning('id');
 
         return id;
     }
