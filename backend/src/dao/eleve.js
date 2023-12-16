@@ -3,7 +3,17 @@ const db = require('../../db/db')
 class EleveDAO {
 
     async getEleve() {
-        return await db.select().table('Elève');
+        return await db('Elève')
+        .select(
+            'Elève.id',
+            'Elève.nom',
+            'Elève.prenom',
+            'Elève.classe_id',
+            'Classe.libelle'
+        )
+        .leftJoin('Classe', 'Classe.id', 'Elève.classe_id')
+        .orderBy(['Classe.libelle', 'Elève.prenom'])
+        ;
     }
 
     async getOneEleve(id) {

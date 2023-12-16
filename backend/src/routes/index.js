@@ -4,6 +4,7 @@ const professeurController = require('../controller/professeur')
 const eleveController = require('../controller/eleve')
 const matiereController = require('../controller/matiere')
 const presenceController = require('../controller/presence')
+const classeController = require('../controller/classe')
 
 const router = express.Router()
 
@@ -32,5 +33,8 @@ router.get('/presence/:id', presenceController.getOnePresence);
 router.post('/presence', presenceController.createPresence);
 router.put('/presence/:id', presenceController.updatePresence);
 router.delete('/presence/:id', presenceController.deletePresence);
+
+router.get('/classe', classeController.getClasse);
+router.get('/classe/:id', classeController.getOneClasse);
 
 module.exports = router;
