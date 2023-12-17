@@ -6,19 +6,17 @@ class PresenceDAO {
         return await db('Présence')
         .select(
             'Présence.id',
-            'Matière.id',
             'Matière.libelle',
             'Matière.Classe_id',
             'Classe.libelle AS classe_libelle',
-            'Elève.id',
             'Elève.nom',
             'Elève.prenom',
             'Présence.status',
             'Présence.created_at',
         )
-        .leftJoin('Matière', 'Matière.id', 'Présence.id_matiere')
-        .leftJoin('Elève', 'Elève.id', 'Présence.id_eleve')
-        .leftJoin('Classe', 'Classe.id', 'Matière.Classe_id');
+        .innerJoin('Matière', 'Matière.id', 'Présence.id_matiere')
+        .innerJoin('Elève', 'Elève.id', 'Présence.id_eleve')
+        .innerJoin('Classe', 'Classe.id', 'Matière.Classe_id');
     }
 
     async getOnePresence(id) {
