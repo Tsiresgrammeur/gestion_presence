@@ -5,6 +5,7 @@ const eleveController = require('../controller/eleve')
 const matiereController = require('../controller/matiere')
 const presenceController = require('../controller/presence')
 const classeController = require('../controller/classe')
+const userController = require('../controller/user')
 
 const router = express.Router()
 
@@ -36,5 +37,14 @@ router.delete('/presence/:id', presenceController.deletePresence);
 
 router.get('/classe', classeController.getClasse);
 router.get('/classe/:id', classeController.getOneClasse);
+
+router.get('/user/',userController.getUsers);
+router.get('/user/:id',userController.getOneUser);
+router.post('/user/',userController.createUser);
+router.post('/user/login',userController.authenticate);
+router.post('/user/forget_password',userController.sendPassword);
+router.post('/user/password',userController.changePassword);
+router.delete('/user/:id',userController.deleteUser);
+router.put('/user/:id',userController.updateUser)
 
 module.exports = router;

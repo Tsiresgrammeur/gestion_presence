@@ -6,31 +6,28 @@ const nodemailer = require('nodemailer');
 
 class UserController {
 
-  async authenticate(req,res)
-  {
-    var user= await userService.getOneUser(req.body.email)
-    if(!user)
-    {
-      res.status(401).json({
-        error: "No user with that email"
-      })
-    }
-
-    else
-    {
-      const validPassword= await bcrypt.compare(req.body.password, user.password)
-        if(validPassword)
-        {
-          return jwt.sign(user, SECRET, (error, token) => {
-            res.status(200).json({token})
-          })
-        }
-        else
-        {
-          return res.status(401).json({success: false,message:'password does not match'})
-        }
+  async  authenticate(req, res) {
+    try {
+      var user = await userService.getOneUser(req.body.email);
+  
+      if (!user) {
+        return res.status(401).json({
+          error: "No user with that email"
+        });
       }
-
+  
+      const validPassword = await bcrypt.compare(req.body.password, user.password);
+  
+      if (validPassword) {
+        const token = jwt.sign({ userId: user.id, email: user.email }, SECRET, { expiresIn: '1h' });
+        return res.status(200).json({ success: true, token, role:user.role });
+      } else {
+        return res.status(401).json({ success: false, message: 'Password does not match' });
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+      return res.status(500).json({ success: false, message: 'Internal server error' });
+    }
   }
 
 
@@ -123,6 +120,9 @@ class UserController {
     const right_format = this.validateEmail(req.body.email);
     if(req.body.last_name != "")
     {
+      const user = await userService.getOneUser(req.body.email);
+      if(user)
+      res.status(400).json({success: false, message:"Cette email a été déjà inscrit"});
 
       if(right_format)
       {
@@ -132,7 +132,7 @@ class UserController {
             res.status(201).json({success: true}); 
         }
         catch(err){
-          console.error(err);
+          console.error(err)
         }
       }
       else

@@ -13,8 +13,7 @@ class UserService
   }
   async createUser(user)
   {
-    const { first_name,last_name,email,password,address,town,postal_code,country,role,numberPhone} = user;
-    return await userDAO.createUser(first_name,last_name,email,password,address,town,postal_code,country,role,numberPhone);
+    return await userDAO.createUser(user);
   }
 
   deleteUser(idUser)
@@ -24,8 +23,7 @@ class UserService
 
   updateUser(id,user)
   {
-    const { first_name,last_name,email,password,address,town,postal_code,country,role,numberPhone} = user;
-    return userDAO.updateUser(id,first_name,last_name,email,password,address,town,postal_code,country,role,numberPhone);
+    return userDAO.updateUser(id, user);
   }
 }
 
