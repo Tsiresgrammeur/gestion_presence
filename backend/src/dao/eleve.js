@@ -33,7 +33,8 @@ class EleveDAO {
         const [id] = await db('Elève').insert({
             nom: eleve.nom,
             prenom: eleve.prenom,
-            classe_id: eleve.classe_id
+            classe_id: eleve.classe_id,
+            photo: eleve.photo.filename
         })
             .returning('id');
 
@@ -49,7 +50,8 @@ class EleveDAO {
         return db('Elève').where({ id: id }).update({
             nom: eleve.nom,
             prenom: eleve.prenom,
-            classe_id: eleve.classe_id
+            classe_id: eleve.classe_id,
+            photo: eleve.photo
         });
     }
 

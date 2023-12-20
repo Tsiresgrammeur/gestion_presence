@@ -8,6 +8,8 @@ const classeController = require('../controller/classe')
 const userController = require('../controller/user')
 
 const router = express.Router()
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 router.get('/professeur', professeurController.getProfesseur);
 router.get('/professeur/:id', professeurController.getOneProfesseur);
@@ -47,4 +49,10 @@ router.post('/user/password',userController.changePassword);
 router.delete('/user/:id',userController.deleteUser);
 router.put('/user/:id',userController.updateUser)
 
+
+
+router.post('/upload', upload.single('file'), (req, res) => {
+  // Save the file and return the filename
+  res.json({ filename: req.file.filename });
+});
 module.exports = router;
