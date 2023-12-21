@@ -23,6 +23,7 @@ class EleveDAO {
                 'Elève.nom',
                 'Elève.prenom',
                 'Elève.classe_id',
+                'Elève.photo',
                 'Classe.libelle'
             )
             .leftJoin('Classe', 'Classe.id', 'Elève.classe_id').
