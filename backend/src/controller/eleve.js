@@ -26,6 +26,18 @@ class EleveController {
   
     }
 
+    async getEleveByClasse(req,res)
+    {
+        try{
+            const eleve = await eleveService.getEleveByClasse(req.params.classe_id)
+            res.status(200).json(eleve);
+        }
+        catch(err){
+            console.error(err);
+        }
+    }
+
+
     async createEleve(req, res) {
         try {
             const id = await eleveService.createEleve(req.body)

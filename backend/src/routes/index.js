@@ -6,6 +6,7 @@ const matiereController = require('../controller/matiere')
 const presenceController = require('../controller/presence')
 const classeController = require('../controller/classe')
 const userController = require('../controller/user')
+const notificationController = require('../controller/notification')
 
 const router = express.Router()
 const multer = require('multer');
@@ -20,6 +21,7 @@ router.delete('/professeur/:id', professeurController.deleteProfesseur);
 
 router.get('/eleve', eleveController.getEleve);
 router.get('/eleve/:id', eleveController.getOneEleve);
+router.get('/eleve/classe/:classe_id', eleveController.getEleveByClasse);
 router.post('/eleve', eleveController.createEleve);
 router.put('/eleve/:id', eleveController.updateEleve);
 router.delete('/eleve/:id', eleveController.deleteEleve);
@@ -50,6 +52,11 @@ router.delete('/user/:id',userController.deleteUser);
 router.put('/user/:id',userController.updateUser)
 
 
+router.get('/notification', notificationController.getNotification);
+router.get('/notification/:id', notificationController.getOneNotification);
+router.post('/notification', notificationController.createNotification);
+router.put('/notification/:id', notificationController.updateNotification);
+router.delete('/notification/:id', notificationController.deleteNotification);
 
 router.post('/upload', upload.single('file'), (req, res) => {
   // Save the file and return the filename

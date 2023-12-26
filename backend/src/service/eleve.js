@@ -10,10 +10,18 @@ class EleveService {
       return await eleveDAO.getOneEleve(id);
     }
 
+    async getEleveByClasse(classe_id)
+    {
+        return await eleveDAO.getEleveByClasse(classe_id);
+    }
+
     createEleve(eleveDto) {
        return eleveDAO.createEleve(eleveDto);
 
     }
+
+
+
 
     deleteEleve(id) {
         return eleveDAO.deleteEleve(id);

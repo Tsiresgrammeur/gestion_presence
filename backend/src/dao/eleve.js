@@ -30,6 +30,11 @@ class EleveDAO {
         where('Elève.id', id).first();
     }
 
+    async getEleveByClasse(classe_id)
+    {
+        return await db('Elève').where('classe_id',classe_id );
+    }
+
     async createEleve(eleve) {
         const [id] = await db('Elève').insert({
             nom: eleve.nom,
