@@ -12,7 +12,7 @@ class EleveDAO {
                 'Classe.libelle'
             )
             .leftJoin('Classe', 'Classe.id', 'Elève.classe_id')
-            .orderBy(['Classe.libelle', 'Elève.prenom'])
+            .orderBy(['Classe.libelle', 'Elève.nom'])
             ;
     }
 
