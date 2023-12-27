@@ -9,6 +9,7 @@ class PresenceDAO {
             'Matière.libelle',
             'Matière.Classe_id',
             'Classe.libelle AS classe_libelle',
+            'Elève.id AS id_eleve',
             'Elève.nom',
             'Elève.prenom',
             'Présence.status',
