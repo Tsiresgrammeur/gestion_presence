@@ -35,6 +35,7 @@ router.delete('/matiere/:id', matiereController.deleteMatiere);
 
 router.get('/presence', presenceController.getPresence);
 router.get('/presence/:id', presenceController.getOnePresence);
+router.post('/absence', presenceController.addAbsence);
 router.post('/presence', presenceController.createPresence);
 router.put('/presence/:id', presenceController.updatePresence);
 router.delete('/presence/:id', presenceController.deletePresence);

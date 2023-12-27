@@ -15,6 +15,10 @@ class PresenceService {
 
     }
 
+    addAbsence(absenceDto){
+        return presenceDAO.addAbsence(absenceDto.eleves, absenceDto.matiere_id);
+    }
+
     deletePresence(id) {
         return presenceDAO.deletePresence(id);
     }

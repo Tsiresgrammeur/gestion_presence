@@ -34,6 +34,21 @@ class PresenceDAO {
         return id;
     }
 
+    async addAbsence(eleveList, matiere) {
+        const presencePromises = eleveList.map(async (eleve) => {
+          const presence = {
+            id_matiere: matiere, // Assuming classe_id is the id_matiere
+            id_eleve: eleve.id,
+            status: 'absent' // You can set the status according to your requirements
+          };
+      
+          const id = await this.createPresence(presence);
+          console.log(`Presence record created with ID: ${id}`);
+        });
+      
+        await Promise.all(presencePromises);
+        return 1;
+      }
 
     async deletePresence(id) {
         return await db('Présence').where('id', id).del();

@@ -52,6 +52,18 @@ class PresenceController {
         }
     }
 
+    async addAbsence(req, res){
+        try {
+            const id = await presenceService.addAbsence(req.body)
+            if(id)
+            res.status(201).json({success:true});
+        } catch (error) {
+            console.error(error);
+
+        }
+
+    }
+
     async updatePresence(req, res) {
         try {
             const id = await presenceService.updatePresence(req.params.id, req.body);
