@@ -24,10 +24,9 @@ class NotificationDAO {
         return await db('Notification').where('id', id).del();
     }
 
-    async updateNotification(id, notification) {
+    async updateNotification(id) {
         return db('Notification').where({ id: id }).update({
-            texte: notification.texte,
-            user_id: notification.user_id
+            status: true,
         });
     }
 

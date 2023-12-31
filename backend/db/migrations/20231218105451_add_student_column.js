@@ -14,6 +14,6 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
    return knex.schema.table('Elève', table =>{
-      table.string('photo')
+      table.dropColumn('photo')
    })
 };

@@ -19,8 +19,8 @@ class NotificationService {
         return notificationDAO.deleteNotification(id);
     }
 
-    updateNotification(id, notification) {
-        return notificationDAO.updateNotification(id, notification);
+    updateNotification(id) {
+        return notificationDAO.updateNotification(id);
     }
 }
 

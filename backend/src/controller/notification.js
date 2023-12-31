@@ -53,7 +53,7 @@ class NotificationController {
 
     async updateNotification(req, res) {
         try {
-            const id = await notificationService.updateNotification(req.params.id, req.body);
+            const id = await notificationService.updateNotification(req.params.id);
             res.status(200).json(id);
         }
 

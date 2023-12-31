@@ -3,7 +3,9 @@ const db = require('../../db/db')
 class ProfesseurDAO {
 
     async getProfesseur() {
-        return await db.select().table('Professeur');
+        return await db.select().table('Professeur')
+        .orderBy('nom')
+        ;
     }
 
     async getOneProfesseur(id) {

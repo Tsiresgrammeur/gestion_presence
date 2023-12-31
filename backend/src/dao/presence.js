@@ -17,7 +17,9 @@ class PresenceDAO {
         )
         .innerJoin('Matière', 'Matière.id', 'Présence.id_matiere')
         .innerJoin('Elève', 'Elève.id', 'Présence.id_eleve')
-        .innerJoin('Classe', 'Classe.id', 'Matière.Classe_id');
+        .innerJoin('Classe', 'Classe.id', 'Matière.Classe_id')
+        .orderBy(['Classe.libelle', 'Elève.nom'])
+        ;
     }
 
     async getOnePresence(id) {
